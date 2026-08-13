@@ -47,10 +47,17 @@ export class CheckoutController {
       );
     }
 
-    @Post(':checkoutId/expire')
-async expireCheckout(
+    @Post(':checkoutId/abandon')
+   async abandonCheckout(
   @Param('checkoutId') checkoutId: string,
-) {
+  ) {
+   return this.checkoutService.abandonCheckout(checkoutId);
+  }
+
+    @Post(':checkoutId/expire')
+    async expireCheckout(
+   @Param('checkoutId') checkoutId: string,
+ ) {
   return this.checkoutService.expireCheckout(checkoutId);
 }
 }

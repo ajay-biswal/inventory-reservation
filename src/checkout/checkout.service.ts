@@ -429,6 +429,36 @@ export class CheckoutService {
   });
 }
 
+
+async abandonCheckout(checkoutId: string) {
+  return this.prisma.$transaction(async (tx) => {
+    const checkout = await tx.checkout.findUnique({
+      where: {
+        id: checkoutId,
+      },
+    });
+
+    if (!checkout) {
+      throw new NotFoundException('Checkout not found');
+    }
+
+    if (checkout.status !== 'RESERVED') {
+      throw new ConflictException(
+        `Checkout is already ${checkout.status}`,
+      );
+    }
+
+    return tx.checkout.update({
+      where: {
+        id: checkoutId,
+      },
+      data: {
+        status: 'ABANDONED',
+      },
+    });
+  });
+}
+
   async expireCheckout(checkoutId: string) {
   return this.prisma.$transaction(async (tx) => {
     /*
