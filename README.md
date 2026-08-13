@@ -405,28 +405,15 @@ docker compose up
 
 ## Submission Checklist
 
-- [ ] Source code committed.
-- [ ] Tests passing.
-- [ ] Concurrency test passing.
-- [ ] README included.
-- [ ] `.env` excluded from Git.
-- [ ] Docker image builds successfully.
-- [ ] Docker Compose starts PostgreSQL and API.
-- [ ] Prisma migrations run successfully.
-- [ ] API endpoints verified.
-- [ ] Repository pushed to GitHub.
-- [ ] API deployed to Render or another free hosting platform.
+- [ Done ] Source code committed.
+- [ Done ] Tests passing.
+- [ Done] Concurrency test passing.
+- [ Done ] README included.
+- [ Done ] `.env` excluded from Git.
+- [ Done ] Docker image builds successfully.
+- [ one ] Docker Compose starts PostgreSQL and API.
+- [ Done ] Prisma migrations run successfully.
+- [  Done ] API endpoints verified.
+- [ Done ] Repository pushed to GitHub.
+- [ Not Done ] API deployed to Render or another free hosting platform.
 
-## Bonus: Frontend Playground
-
-A lightweight frontend playground can be added to exercise the API manually.
-
-It can provide:
-
-- Product/location creation.
-- Inventory setup.
-- Checkout creation.
-- Payment success/failure/abandon actions.
-- Checkout expiration.
-- Product availability.
-- Location-level inventory.
