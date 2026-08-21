@@ -267,7 +267,7 @@ pnpm exec jest src/checkout/checkout.service.spec.ts --runInBand
 Run E2E tests:
 
 ```bash
-pnpm exec jest test --runInBand
+pnpm test:e2e
 ```
 
 Important scenarios covered by the test suite include:

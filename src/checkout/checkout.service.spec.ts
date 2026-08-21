@@ -40,6 +40,7 @@ beforeEach(async () => {
   checkout: {
     findUnique: checkoutFindUnique,
     create: checkoutCreate,
+    update: checkoutUpdate
   },
 
   product: {
@@ -379,6 +380,11 @@ it('should keep inventory reserved when checkout is abandoned', async () => {
     id: checkoutId,
     status: 'RESERVED',
   });
+
+  checkoutUpdate.mockResolvedValue({
+    id:checkoutId,
+    status: 'ABANDONED'
+  })
 
   const result = await service.abandonCheckout(checkoutId);
 
