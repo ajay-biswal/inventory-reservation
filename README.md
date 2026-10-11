@@ -840,22 +840,5 @@ It is the reasoning required to keep **inventory, reservations, checkout state, 
 
 ---
 
-## Future Improvements
 
-Potential next steps include:
 
-* API authentication and authorization
-* payment-provider integration
-* asynchronous event processing
-* distributed reservation/expiry workers
-* observability with structured logging and metrics
-* OpenAPI/Swagger documentation
-* deployment and CI/CD
-* broader concurrency and failure-injection testing
-
-```
-
-This version is much closer to what I'd want a **backend interviewer to see when opening your GitHub repository**: the assignment is now background context, while the README foregrounds the engineering problems, decisions, concurrency reasoning, database design, and tests.
-
-One correction before you push: **I would not claim "Prisma interactive transactions" as a special Prisma feature in the highlights.** The implementation does use Prisma's `$transaction(async (tx) => ...)`, but the important engineering claim is simply **transactional workflows backed by PostgreSQL**.
-```
