@@ -56,7 +56,8 @@ export const ModelName = {
   ServiceZone: 'ServiceZone',
   Inventory: 'Inventory',
   Checkout: 'Checkout',
-  Reservation: 'Reservation'
+  Reservation: 'Reservation',
+  Payment: 'Payment'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -78,6 +79,7 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 export const ProductScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  pricePaise: 'pricePaise',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -125,6 +127,7 @@ export const CheckoutScalarFieldEnum = {
   id: 'id',
   productId: 'productId',
   quantity: 'quantity',
+  unitPricePaise: 'unitPricePaise',
   locationId: 'locationId',
   idempotencyKey: 'idempotencyKey',
   payloadHash: 'payloadHash',
@@ -150,6 +153,22 @@ export const ReservationScalarFieldEnum = {
 } as const
 
 export type ReservationScalarFieldEnum = (typeof ReservationScalarFieldEnum)[keyof typeof ReservationScalarFieldEnum]
+
+
+export const PaymentScalarFieldEnum = {
+  id: 'id',
+  checkoutId: 'checkoutId',
+  provider: 'provider',
+  providerOrderId: 'providerOrderId',
+  providerPaymentId: 'providerPaymentId',
+  amountPaise: 'amountPaise',
+  currency: 'currency',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PaymentScalarFieldEnum = (typeof PaymentScalarFieldEnum)[keyof typeof PaymentScalarFieldEnum]
 
 
 export const SortOrder = {

@@ -10,6 +10,7 @@ export class ProductService {
     return this.prisma.product.create({
       data: {
         name: dto.name,
+        pricePaise: dto.pricePaise
       },
     });
   }

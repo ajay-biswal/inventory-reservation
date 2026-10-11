@@ -8,6 +8,7 @@ import { ProductModule } from './product/product.module.js';
 import { LocationModule } from './location/location.module.js';
 import { InventoryModule } from './inventory/inventory.module.js';
 import { CheckoutModule } from './checkout/checkout.module.js';
+import { PaymentsModule } from './payments/payments.module.js';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { CheckoutModule } from './checkout/checkout.module.js';
     LocationModule,
     InventoryModule,
     CheckoutModule,
+    PaymentsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

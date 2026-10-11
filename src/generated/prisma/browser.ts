@@ -47,3 +47,8 @@ export type Checkout = Prisma.CheckoutModel
  * 
  */
 export type Reservation = Prisma.ReservationModel
+/**
+ * Model Payment
+ * 
+ */
+export type Payment = Prisma.PaymentModel

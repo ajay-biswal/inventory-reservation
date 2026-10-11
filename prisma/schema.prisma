@@ -24,9 +24,18 @@ enum ReservationStatus {
   CONSUMED
 }
 
+enum PaymentStatus {
+  PENDING
+  CREATED
+  AUTHORIZED
+  CAPTURED
+  FAILED
+}
+
 model Product {
   id        String   @id @default(uuid())
   name      String
+  pricePaise Int     @default(0)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -87,6 +96,7 @@ model Checkout {
   id              String         @id @default(uuid())
   productId       String
   quantity        Int
+  unitPricePaise  Int
   locationId      String
   idempotencyKey  String         @unique
   payloadHash     String
@@ -101,6 +111,7 @@ model Checkout {
   product     Product      @relation(fields: [productId], references: [id])
   location    Location     @relation(fields: [locationId], references: [id])
   reservation Reservation?
+  payment     Payment?
 
   @@index([productId])
   @@index([locationId])
@@ -117,4 +128,22 @@ model Reservation {
   releasedAt DateTime?
 
   checkout Checkout @relation(fields: [checkoutId], references: [id], onDelete: Cascade)
+}
+
+
+model Payment {
+  id                String        @id @default(uuid())
+  checkoutId        String        @unique
+  provider          String        @default("RAZORPAY")
+  providerOrderId   String?       @unique
+  providerPaymentId String?       @unique
+  amountPaise       Int
+  currency          String        @default("INR")
+  status            PaymentStatus @default(PENDING)
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+
+  checkout Checkout @relation(fields: [checkoutId], references: [id], onDelete: Restrict)
+
+  @@index([status])
 }

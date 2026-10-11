@@ -73,6 +73,12 @@ export class CheckoutService {
       throw new NotFoundException('Product not found');
     }
 
+    if(product.pricePaise <= 0){
+      throw new UnprocessableEntityException(
+        'Product price must be greater tham zero',
+      )
+    }
+
     const candidates =
       await this.findCandidateLocations(dto);
 
@@ -96,6 +102,7 @@ export class CheckoutService {
           idempotencyKey,
           payloadHash,
           candidate.locationId,
+          product.pricePaise
         );
       } catch (error) {
         if (error instanceof InsufficientInventoryError) {
@@ -208,6 +215,7 @@ export class CheckoutService {
     idempotencyKey: string,
     payloadHash: string,
     locationId: string,
+    unitPricePaise: number
   ) {
     return this.prisma.$transaction(async (tx) => {
       /*
@@ -273,6 +281,7 @@ export class CheckoutService {
         data: {
           productId: dto.productId,
           quantity: dto.quantity,
+          unitPricePaise,
           locationId,
 
           idempotencyKey,

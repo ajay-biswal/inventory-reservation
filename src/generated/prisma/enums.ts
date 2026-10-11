@@ -27,3 +27,14 @@ export const ReservationStatus = {
 } as const
 
 export type ReservationStatus = (typeof ReservationStatus)[keyof typeof ReservationStatus]
+
+
+export const PaymentStatus = {
+  PENDING: 'PENDING',
+  CREATED: 'CREATED',
+  AUTHORIZED: 'AUTHORIZED',
+  CAPTURED: 'CAPTURED',
+  FAILED: 'FAILED'
+} as const
+
+export type PaymentStatus = (typeof PaymentStatus)[keyof typeof PaymentStatus]

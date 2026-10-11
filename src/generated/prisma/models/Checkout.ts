@@ -28,16 +28,19 @@ export type AggregateCheckout = {
 
 export type CheckoutAvgAggregateOutputType = {
   quantity: number | null
+  unitPricePaise: number | null
 }
 
 export type CheckoutSumAggregateOutputType = {
   quantity: number | null
+  unitPricePaise: number | null
 }
 
 export type CheckoutMinAggregateOutputType = {
   id: string | null
   productId: string | null
   quantity: number | null
+  unitPricePaise: number | null
   locationId: string | null
   idempotencyKey: string | null
   payloadHash: string | null
@@ -54,6 +57,7 @@ export type CheckoutMaxAggregateOutputType = {
   id: string | null
   productId: string | null
   quantity: number | null
+  unitPricePaise: number | null
   locationId: string | null
   idempotencyKey: string | null
   payloadHash: string | null
@@ -70,6 +74,7 @@ export type CheckoutCountAggregateOutputType = {
   id: number
   productId: number
   quantity: number
+  unitPricePaise: number
   locationId: number
   idempotencyKey: number
   payloadHash: number
@@ -86,16 +91,19 @@ export type CheckoutCountAggregateOutputType = {
 
 export type CheckoutAvgAggregateInputType = {
   quantity?: true
+  unitPricePaise?: true
 }
 
 export type CheckoutSumAggregateInputType = {
   quantity?: true
+  unitPricePaise?: true
 }
 
 export type CheckoutMinAggregateInputType = {
   id?: true
   productId?: true
   quantity?: true
+  unitPricePaise?: true
   locationId?: true
   idempotencyKey?: true
   payloadHash?: true
@@ -112,6 +120,7 @@ export type CheckoutMaxAggregateInputType = {
   id?: true
   productId?: true
   quantity?: true
+  unitPricePaise?: true
   locationId?: true
   idempotencyKey?: true
   payloadHash?: true
@@ -128,6 +137,7 @@ export type CheckoutCountAggregateInputType = {
   id?: true
   productId?: true
   quantity?: true
+  unitPricePaise?: true
   locationId?: true
   idempotencyKey?: true
   payloadHash?: true
@@ -231,6 +241,7 @@ export type CheckoutGroupByOutputType = {
   id: string
   productId: string
   quantity: number
+  unitPricePaise: number
   locationId: string
   idempotencyKey: string
   payloadHash: string
@@ -270,6 +281,7 @@ export type CheckoutWhereInput = {
   id?: Prisma.StringFilter<"Checkout"> | string
   productId?: Prisma.StringFilter<"Checkout"> | string
   quantity?: Prisma.IntFilter<"Checkout"> | number
+  unitPricePaise?: Prisma.IntFilter<"Checkout"> | number
   locationId?: Prisma.StringFilter<"Checkout"> | string
   idempotencyKey?: Prisma.StringFilter<"Checkout"> | string
   payloadHash?: Prisma.StringFilter<"Checkout"> | string
@@ -283,12 +295,14 @@ export type CheckoutWhereInput = {
   product?: Prisma.XOR<Prisma.ProductScalarRelationFilter, Prisma.ProductWhereInput>
   location?: Prisma.XOR<Prisma.LocationScalarRelationFilter, Prisma.LocationWhereInput>
   reservation?: Prisma.XOR<Prisma.ReservationNullableScalarRelationFilter, Prisma.ReservationWhereInput> | null
+  payment?: Prisma.XOR<Prisma.PaymentNullableScalarRelationFilter, Prisma.PaymentWhereInput> | null
 }
 
 export type CheckoutOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   productId?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
+  unitPricePaise?: Prisma.SortOrder
   locationId?: Prisma.SortOrder
   idempotencyKey?: Prisma.SortOrder
   payloadHash?: Prisma.SortOrder
@@ -302,6 +316,7 @@ export type CheckoutOrderByWithRelationInput = {
   product?: Prisma.ProductOrderByWithRelationInput
   location?: Prisma.LocationOrderByWithRelationInput
   reservation?: Prisma.ReservationOrderByWithRelationInput
+  payment?: Prisma.PaymentOrderByWithRelationInput
 }
 
 export type CheckoutWhereUniqueInput = Prisma.AtLeast<{
@@ -312,6 +327,7 @@ export type CheckoutWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.CheckoutWhereInput | Prisma.CheckoutWhereInput[]
   productId?: Prisma.StringFilter<"Checkout"> | string
   quantity?: Prisma.IntFilter<"Checkout"> | number
+  unitPricePaise?: Prisma.IntFilter<"Checkout"> | number
   locationId?: Prisma.StringFilter<"Checkout"> | string
   payloadHash?: Prisma.StringFilter<"Checkout"> | string
   deliveryPincode?: Prisma.StringFilter<"Checkout"> | string
@@ -324,12 +340,14 @@ export type CheckoutWhereUniqueInput = Prisma.AtLeast<{
   product?: Prisma.XOR<Prisma.ProductScalarRelationFilter, Prisma.ProductWhereInput>
   location?: Prisma.XOR<Prisma.LocationScalarRelationFilter, Prisma.LocationWhereInput>
   reservation?: Prisma.XOR<Prisma.ReservationNullableScalarRelationFilter, Prisma.ReservationWhereInput> | null
+  payment?: Prisma.XOR<Prisma.PaymentNullableScalarRelationFilter, Prisma.PaymentWhereInput> | null
 }, "id" | "idempotencyKey">
 
 export type CheckoutOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   productId?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
+  unitPricePaise?: Prisma.SortOrder
   locationId?: Prisma.SortOrder
   idempotencyKey?: Prisma.SortOrder
   payloadHash?: Prisma.SortOrder
@@ -354,6 +372,7 @@ export type CheckoutScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Checkout"> | string
   productId?: Prisma.StringWithAggregatesFilter<"Checkout"> | string
   quantity?: Prisma.IntWithAggregatesFilter<"Checkout"> | number
+  unitPricePaise?: Prisma.IntWithAggregatesFilter<"Checkout"> | number
   locationId?: Prisma.StringWithAggregatesFilter<"Checkout"> | string
   idempotencyKey?: Prisma.StringWithAggregatesFilter<"Checkout"> | string
   payloadHash?: Prisma.StringWithAggregatesFilter<"Checkout"> | string
@@ -369,6 +388,7 @@ export type CheckoutScalarWhereWithAggregatesInput = {
 export type CheckoutCreateInput = {
   id?: string
   quantity: number
+  unitPricePaise: number
   idempotencyKey: string
   payloadHash: string
   deliveryPincode: string
@@ -381,12 +401,14 @@ export type CheckoutCreateInput = {
   product: Prisma.ProductCreateNestedOneWithoutCheckoutsInput
   location: Prisma.LocationCreateNestedOneWithoutCheckoutsInput
   reservation?: Prisma.ReservationCreateNestedOneWithoutCheckoutInput
+  payment?: Prisma.PaymentCreateNestedOneWithoutCheckoutInput
 }
 
 export type CheckoutUncheckedCreateInput = {
   id?: string
   productId: string
   quantity: number
+  unitPricePaise: number
   locationId: string
   idempotencyKey: string
   payloadHash: string
@@ -398,11 +420,13 @@ export type CheckoutUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   reservation?: Prisma.ReservationUncheckedCreateNestedOneWithoutCheckoutInput
+  payment?: Prisma.PaymentUncheckedCreateNestedOneWithoutCheckoutInput
 }
 
 export type CheckoutUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  unitPricePaise?: Prisma.IntFieldUpdateOperationsInput | number
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   payloadHash?: Prisma.StringFieldUpdateOperationsInput | string
   deliveryPincode?: Prisma.StringFieldUpdateOperationsInput | string
@@ -415,12 +439,14 @@ export type CheckoutUpdateInput = {
   product?: Prisma.ProductUpdateOneRequiredWithoutCheckoutsNestedInput
   location?: Prisma.LocationUpdateOneRequiredWithoutCheckoutsNestedInput
   reservation?: Prisma.ReservationUpdateOneWithoutCheckoutNestedInput
+  payment?: Prisma.PaymentUpdateOneWithoutCheckoutNestedInput
 }
 
 export type CheckoutUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   productId?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  unitPricePaise?: Prisma.IntFieldUpdateOperationsInput | number
   locationId?: Prisma.StringFieldUpdateOperationsInput | string
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   payloadHash?: Prisma.StringFieldUpdateOperationsInput | string
@@ -432,12 +458,14 @@ export type CheckoutUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   reservation?: Prisma.ReservationUncheckedUpdateOneWithoutCheckoutNestedInput
+  payment?: Prisma.PaymentUncheckedUpdateOneWithoutCheckoutNestedInput
 }
 
 export type CheckoutCreateManyInput = {
   id?: string
   productId: string
   quantity: number
+  unitPricePaise: number
   locationId: string
   idempotencyKey: string
   payloadHash: string
@@ -453,6 +481,7 @@ export type CheckoutCreateManyInput = {
 export type CheckoutUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  unitPricePaise?: Prisma.IntFieldUpdateOperationsInput | number
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   payloadHash?: Prisma.StringFieldUpdateOperationsInput | string
   deliveryPincode?: Prisma.StringFieldUpdateOperationsInput | string
@@ -468,6 +497,7 @@ export type CheckoutUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   productId?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  unitPricePaise?: Prisma.IntFieldUpdateOperationsInput | number
   locationId?: Prisma.StringFieldUpdateOperationsInput | string
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   payloadHash?: Prisma.StringFieldUpdateOperationsInput | string
@@ -494,6 +524,7 @@ export type CheckoutCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   productId?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
+  unitPricePaise?: Prisma.SortOrder
   locationId?: Prisma.SortOrder
   idempotencyKey?: Prisma.SortOrder
   payloadHash?: Prisma.SortOrder
@@ -508,12 +539,14 @@ export type CheckoutCountOrderByAggregateInput = {
 
 export type CheckoutAvgOrderByAggregateInput = {
   quantity?: Prisma.SortOrder
+  unitPricePaise?: Prisma.SortOrder
 }
 
 export type CheckoutMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   productId?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
+  unitPricePaise?: Prisma.SortOrder
   locationId?: Prisma.SortOrder
   idempotencyKey?: Prisma.SortOrder
   payloadHash?: Prisma.SortOrder
@@ -530,6 +563,7 @@ export type CheckoutMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   productId?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
+  unitPricePaise?: Prisma.SortOrder
   locationId?: Prisma.SortOrder
   idempotencyKey?: Prisma.SortOrder
   payloadHash?: Prisma.SortOrder
@@ -544,6 +578,7 @@ export type CheckoutMinOrderByAggregateInput = {
 
 export type CheckoutSumOrderByAggregateInput = {
   quantity?: Prisma.SortOrder
+  unitPricePaise?: Prisma.SortOrder
 }
 
 export type CheckoutScalarRelationFilter = {
@@ -657,9 +692,24 @@ export type CheckoutUpdateOneRequiredWithoutReservationNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.CheckoutUpdateToOneWithWhereWithoutReservationInput, Prisma.CheckoutUpdateWithoutReservationInput>, Prisma.CheckoutUncheckedUpdateWithoutReservationInput>
 }
 
+export type CheckoutCreateNestedOneWithoutPaymentInput = {
+  create?: Prisma.XOR<Prisma.CheckoutCreateWithoutPaymentInput, Prisma.CheckoutUncheckedCreateWithoutPaymentInput>
+  connectOrCreate?: Prisma.CheckoutCreateOrConnectWithoutPaymentInput
+  connect?: Prisma.CheckoutWhereUniqueInput
+}
+
+export type CheckoutUpdateOneRequiredWithoutPaymentNestedInput = {
+  create?: Prisma.XOR<Prisma.CheckoutCreateWithoutPaymentInput, Prisma.CheckoutUncheckedCreateWithoutPaymentInput>
+  connectOrCreate?: Prisma.CheckoutCreateOrConnectWithoutPaymentInput
+  upsert?: Prisma.CheckoutUpsertWithoutPaymentInput
+  connect?: Prisma.CheckoutWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CheckoutUpdateToOneWithWhereWithoutPaymentInput, Prisma.CheckoutUpdateWithoutPaymentInput>, Prisma.CheckoutUncheckedUpdateWithoutPaymentInput>
+}
+
 export type CheckoutCreateWithoutProductInput = {
   id?: string
   quantity: number
+  unitPricePaise: number
   idempotencyKey: string
   payloadHash: string
   deliveryPincode: string
@@ -671,11 +721,13 @@ export type CheckoutCreateWithoutProductInput = {
   updatedAt?: Date | string
   location: Prisma.LocationCreateNestedOneWithoutCheckoutsInput
   reservation?: Prisma.ReservationCreateNestedOneWithoutCheckoutInput
+  payment?: Prisma.PaymentCreateNestedOneWithoutCheckoutInput
 }
 
 export type CheckoutUncheckedCreateWithoutProductInput = {
   id?: string
   quantity: number
+  unitPricePaise: number
   locationId: string
   idempotencyKey: string
   payloadHash: string
@@ -687,6 +739,7 @@ export type CheckoutUncheckedCreateWithoutProductInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   reservation?: Prisma.ReservationUncheckedCreateNestedOneWithoutCheckoutInput
+  payment?: Prisma.PaymentUncheckedCreateNestedOneWithoutCheckoutInput
 }
 
 export type CheckoutCreateOrConnectWithoutProductInput = {
@@ -722,6 +775,7 @@ export type CheckoutScalarWhereInput = {
   id?: Prisma.StringFilter<"Checkout"> | string
   productId?: Prisma.StringFilter<"Checkout"> | string
   quantity?: Prisma.IntFilter<"Checkout"> | number
+  unitPricePaise?: Prisma.IntFilter<"Checkout"> | number
   locationId?: Prisma.StringFilter<"Checkout"> | string
   idempotencyKey?: Prisma.StringFilter<"Checkout"> | string
   payloadHash?: Prisma.StringFilter<"Checkout"> | string
@@ -737,6 +791,7 @@ export type CheckoutScalarWhereInput = {
 export type CheckoutCreateWithoutLocationInput = {
   id?: string
   quantity: number
+  unitPricePaise: number
   idempotencyKey: string
   payloadHash: string
   deliveryPincode: string
@@ -748,12 +803,14 @@ export type CheckoutCreateWithoutLocationInput = {
   updatedAt?: Date | string
   product: Prisma.ProductCreateNestedOneWithoutCheckoutsInput
   reservation?: Prisma.ReservationCreateNestedOneWithoutCheckoutInput
+  payment?: Prisma.PaymentCreateNestedOneWithoutCheckoutInput
 }
 
 export type CheckoutUncheckedCreateWithoutLocationInput = {
   id?: string
   productId: string
   quantity: number
+  unitPricePaise: number
   idempotencyKey: string
   payloadHash: string
   deliveryPincode: string
@@ -764,6 +821,7 @@ export type CheckoutUncheckedCreateWithoutLocationInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   reservation?: Prisma.ReservationUncheckedCreateNestedOneWithoutCheckoutInput
+  payment?: Prisma.PaymentUncheckedCreateNestedOneWithoutCheckoutInput
 }
 
 export type CheckoutCreateOrConnectWithoutLocationInput = {
@@ -795,6 +853,7 @@ export type CheckoutUpdateManyWithWhereWithoutLocationInput = {
 export type CheckoutCreateWithoutReservationInput = {
   id?: string
   quantity: number
+  unitPricePaise: number
   idempotencyKey: string
   payloadHash: string
   deliveryPincode: string
@@ -806,12 +865,14 @@ export type CheckoutCreateWithoutReservationInput = {
   updatedAt?: Date | string
   product: Prisma.ProductCreateNestedOneWithoutCheckoutsInput
   location: Prisma.LocationCreateNestedOneWithoutCheckoutsInput
+  payment?: Prisma.PaymentCreateNestedOneWithoutCheckoutInput
 }
 
 export type CheckoutUncheckedCreateWithoutReservationInput = {
   id?: string
   productId: string
   quantity: number
+  unitPricePaise: number
   locationId: string
   idempotencyKey: string
   payloadHash: string
@@ -822,6 +883,7 @@ export type CheckoutUncheckedCreateWithoutReservationInput = {
   expiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  payment?: Prisma.PaymentUncheckedCreateNestedOneWithoutCheckoutInput
 }
 
 export type CheckoutCreateOrConnectWithoutReservationInput = {
@@ -843,6 +905,7 @@ export type CheckoutUpdateToOneWithWhereWithoutReservationInput = {
 export type CheckoutUpdateWithoutReservationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  unitPricePaise?: Prisma.IntFieldUpdateOperationsInput | number
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   payloadHash?: Prisma.StringFieldUpdateOperationsInput | string
   deliveryPincode?: Prisma.StringFieldUpdateOperationsInput | string
@@ -854,12 +917,14 @@ export type CheckoutUpdateWithoutReservationInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   product?: Prisma.ProductUpdateOneRequiredWithoutCheckoutsNestedInput
   location?: Prisma.LocationUpdateOneRequiredWithoutCheckoutsNestedInput
+  payment?: Prisma.PaymentUpdateOneWithoutCheckoutNestedInput
 }
 
 export type CheckoutUncheckedUpdateWithoutReservationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   productId?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  unitPricePaise?: Prisma.IntFieldUpdateOperationsInput | number
   locationId?: Prisma.StringFieldUpdateOperationsInput | string
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   payloadHash?: Prisma.StringFieldUpdateOperationsInput | string
@@ -870,11 +935,101 @@ export type CheckoutUncheckedUpdateWithoutReservationInput = {
   expiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  payment?: Prisma.PaymentUncheckedUpdateOneWithoutCheckoutNestedInput
+}
+
+export type CheckoutCreateWithoutPaymentInput = {
+  id?: string
+  quantity: number
+  unitPricePaise: number
+  idempotencyKey: string
+  payloadHash: string
+  deliveryPincode: string
+  deliveryCity: string
+  deliveryState: string
+  status: $Enums.CheckoutStatus
+  expiresAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  product: Prisma.ProductCreateNestedOneWithoutCheckoutsInput
+  location: Prisma.LocationCreateNestedOneWithoutCheckoutsInput
+  reservation?: Prisma.ReservationCreateNestedOneWithoutCheckoutInput
+}
+
+export type CheckoutUncheckedCreateWithoutPaymentInput = {
+  id?: string
+  productId: string
+  quantity: number
+  unitPricePaise: number
+  locationId: string
+  idempotencyKey: string
+  payloadHash: string
+  deliveryPincode: string
+  deliveryCity: string
+  deliveryState: string
+  status: $Enums.CheckoutStatus
+  expiresAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  reservation?: Prisma.ReservationUncheckedCreateNestedOneWithoutCheckoutInput
+}
+
+export type CheckoutCreateOrConnectWithoutPaymentInput = {
+  where: Prisma.CheckoutWhereUniqueInput
+  create: Prisma.XOR<Prisma.CheckoutCreateWithoutPaymentInput, Prisma.CheckoutUncheckedCreateWithoutPaymentInput>
+}
+
+export type CheckoutUpsertWithoutPaymentInput = {
+  update: Prisma.XOR<Prisma.CheckoutUpdateWithoutPaymentInput, Prisma.CheckoutUncheckedUpdateWithoutPaymentInput>
+  create: Prisma.XOR<Prisma.CheckoutCreateWithoutPaymentInput, Prisma.CheckoutUncheckedCreateWithoutPaymentInput>
+  where?: Prisma.CheckoutWhereInput
+}
+
+export type CheckoutUpdateToOneWithWhereWithoutPaymentInput = {
+  where?: Prisma.CheckoutWhereInput
+  data: Prisma.XOR<Prisma.CheckoutUpdateWithoutPaymentInput, Prisma.CheckoutUncheckedUpdateWithoutPaymentInput>
+}
+
+export type CheckoutUpdateWithoutPaymentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  unitPricePaise?: Prisma.IntFieldUpdateOperationsInput | number
+  idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  payloadHash?: Prisma.StringFieldUpdateOperationsInput | string
+  deliveryPincode?: Prisma.StringFieldUpdateOperationsInput | string
+  deliveryCity?: Prisma.StringFieldUpdateOperationsInput | string
+  deliveryState?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumCheckoutStatusFieldUpdateOperationsInput | $Enums.CheckoutStatus
+  expiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  product?: Prisma.ProductUpdateOneRequiredWithoutCheckoutsNestedInput
+  location?: Prisma.LocationUpdateOneRequiredWithoutCheckoutsNestedInput
+  reservation?: Prisma.ReservationUpdateOneWithoutCheckoutNestedInput
+}
+
+export type CheckoutUncheckedUpdateWithoutPaymentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  productId?: Prisma.StringFieldUpdateOperationsInput | string
+  quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  unitPricePaise?: Prisma.IntFieldUpdateOperationsInput | number
+  locationId?: Prisma.StringFieldUpdateOperationsInput | string
+  idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
+  payloadHash?: Prisma.StringFieldUpdateOperationsInput | string
+  deliveryPincode?: Prisma.StringFieldUpdateOperationsInput | string
+  deliveryCity?: Prisma.StringFieldUpdateOperationsInput | string
+  deliveryState?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumCheckoutStatusFieldUpdateOperationsInput | $Enums.CheckoutStatus
+  expiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reservation?: Prisma.ReservationUncheckedUpdateOneWithoutCheckoutNestedInput
 }
 
 export type CheckoutCreateManyProductInput = {
   id?: string
   quantity: number
+  unitPricePaise: number
   locationId: string
   idempotencyKey: string
   payloadHash: string
@@ -890,6 +1045,7 @@ export type CheckoutCreateManyProductInput = {
 export type CheckoutUpdateWithoutProductInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  unitPricePaise?: Prisma.IntFieldUpdateOperationsInput | number
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   payloadHash?: Prisma.StringFieldUpdateOperationsInput | string
   deliveryPincode?: Prisma.StringFieldUpdateOperationsInput | string
@@ -901,11 +1057,13 @@ export type CheckoutUpdateWithoutProductInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   location?: Prisma.LocationUpdateOneRequiredWithoutCheckoutsNestedInput
   reservation?: Prisma.ReservationUpdateOneWithoutCheckoutNestedInput
+  payment?: Prisma.PaymentUpdateOneWithoutCheckoutNestedInput
 }
 
 export type CheckoutUncheckedUpdateWithoutProductInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  unitPricePaise?: Prisma.IntFieldUpdateOperationsInput | number
   locationId?: Prisma.StringFieldUpdateOperationsInput | string
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   payloadHash?: Prisma.StringFieldUpdateOperationsInput | string
@@ -917,11 +1075,13 @@ export type CheckoutUncheckedUpdateWithoutProductInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   reservation?: Prisma.ReservationUncheckedUpdateOneWithoutCheckoutNestedInput
+  payment?: Prisma.PaymentUncheckedUpdateOneWithoutCheckoutNestedInput
 }
 
 export type CheckoutUncheckedUpdateManyWithoutProductInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  unitPricePaise?: Prisma.IntFieldUpdateOperationsInput | number
   locationId?: Prisma.StringFieldUpdateOperationsInput | string
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   payloadHash?: Prisma.StringFieldUpdateOperationsInput | string
@@ -938,6 +1098,7 @@ export type CheckoutCreateManyLocationInput = {
   id?: string
   productId: string
   quantity: number
+  unitPricePaise: number
   idempotencyKey: string
   payloadHash: string
   deliveryPincode: string
@@ -952,6 +1113,7 @@ export type CheckoutCreateManyLocationInput = {
 export type CheckoutUpdateWithoutLocationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  unitPricePaise?: Prisma.IntFieldUpdateOperationsInput | number
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   payloadHash?: Prisma.StringFieldUpdateOperationsInput | string
   deliveryPincode?: Prisma.StringFieldUpdateOperationsInput | string
@@ -963,12 +1125,14 @@ export type CheckoutUpdateWithoutLocationInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   product?: Prisma.ProductUpdateOneRequiredWithoutCheckoutsNestedInput
   reservation?: Prisma.ReservationUpdateOneWithoutCheckoutNestedInput
+  payment?: Prisma.PaymentUpdateOneWithoutCheckoutNestedInput
 }
 
 export type CheckoutUncheckedUpdateWithoutLocationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   productId?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  unitPricePaise?: Prisma.IntFieldUpdateOperationsInput | number
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   payloadHash?: Prisma.StringFieldUpdateOperationsInput | string
   deliveryPincode?: Prisma.StringFieldUpdateOperationsInput | string
@@ -979,12 +1143,14 @@ export type CheckoutUncheckedUpdateWithoutLocationInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   reservation?: Prisma.ReservationUncheckedUpdateOneWithoutCheckoutNestedInput
+  payment?: Prisma.PaymentUncheckedUpdateOneWithoutCheckoutNestedInput
 }
 
 export type CheckoutUncheckedUpdateManyWithoutLocationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   productId?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  unitPricePaise?: Prisma.IntFieldUpdateOperationsInput | number
   idempotencyKey?: Prisma.StringFieldUpdateOperationsInput | string
   payloadHash?: Prisma.StringFieldUpdateOperationsInput | string
   deliveryPincode?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1002,6 +1168,7 @@ export type CheckoutSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   id?: boolean
   productId?: boolean
   quantity?: boolean
+  unitPricePaise?: boolean
   locationId?: boolean
   idempotencyKey?: boolean
   payloadHash?: boolean
@@ -1015,12 +1182,14 @@ export type CheckoutSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
   location?: boolean | Prisma.LocationDefaultArgs<ExtArgs>
   reservation?: boolean | Prisma.Checkout$reservationArgs<ExtArgs>
+  payment?: boolean | Prisma.Checkout$paymentArgs<ExtArgs>
 }, ExtArgs["result"]["checkout"]>
 
 export type CheckoutSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   productId?: boolean
   quantity?: boolean
+  unitPricePaise?: boolean
   locationId?: boolean
   idempotencyKey?: boolean
   payloadHash?: boolean
@@ -1039,6 +1208,7 @@ export type CheckoutSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   id?: boolean
   productId?: boolean
   quantity?: boolean
+  unitPricePaise?: boolean
   locationId?: boolean
   idempotencyKey?: boolean
   payloadHash?: boolean
@@ -1057,6 +1227,7 @@ export type CheckoutSelectScalar = {
   id?: boolean
   productId?: boolean
   quantity?: boolean
+  unitPricePaise?: boolean
   locationId?: boolean
   idempotencyKey?: boolean
   payloadHash?: boolean
@@ -1069,11 +1240,12 @@ export type CheckoutSelectScalar = {
   updatedAt?: boolean
 }
 
-export type CheckoutOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "productId" | "quantity" | "locationId" | "idempotencyKey" | "payloadHash" | "deliveryPincode" | "deliveryCity" | "deliveryState" | "status" | "expiresAt" | "createdAt" | "updatedAt", ExtArgs["result"]["checkout"]>
+export type CheckoutOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "productId" | "quantity" | "unitPricePaise" | "locationId" | "idempotencyKey" | "payloadHash" | "deliveryPincode" | "deliveryCity" | "deliveryState" | "status" | "expiresAt" | "createdAt" | "updatedAt", ExtArgs["result"]["checkout"]>
 export type CheckoutInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
   location?: boolean | Prisma.LocationDefaultArgs<ExtArgs>
   reservation?: boolean | Prisma.Checkout$reservationArgs<ExtArgs>
+  payment?: boolean | Prisma.Checkout$paymentArgs<ExtArgs>
 }
 export type CheckoutIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
@@ -1090,11 +1262,13 @@ export type $CheckoutPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     product: Prisma.$ProductPayload<ExtArgs>
     location: Prisma.$LocationPayload<ExtArgs>
     reservation: Prisma.$ReservationPayload<ExtArgs> | null
+    payment: Prisma.$PaymentPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     productId: string
     quantity: number
+    unitPricePaise: number
     locationId: string
     idempotencyKey: string
     payloadHash: string
@@ -1502,6 +1676,7 @@ export interface Prisma__CheckoutClient<T, Null = never, ExtArgs extends runtime
   product<T extends Prisma.ProductDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProductDefaultArgs<ExtArgs>>): Prisma.Prisma__ProductClient<runtime.Types.Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   location<T extends Prisma.LocationDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.LocationDefaultArgs<ExtArgs>>): Prisma.Prisma__LocationClient<runtime.Types.Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   reservation<T extends Prisma.Checkout$reservationArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Checkout$reservationArgs<ExtArgs>>): Prisma.Prisma__ReservationClient<runtime.Types.Result.GetResult<Prisma.$ReservationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  payment<T extends Prisma.Checkout$paymentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Checkout$paymentArgs<ExtArgs>>): Prisma.Prisma__PaymentClient<runtime.Types.Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1534,6 +1709,7 @@ export interface CheckoutFieldRefs {
   readonly id: Prisma.FieldRef<"Checkout", 'String'>
   readonly productId: Prisma.FieldRef<"Checkout", 'String'>
   readonly quantity: Prisma.FieldRef<"Checkout", 'Int'>
+  readonly unitPricePaise: Prisma.FieldRef<"Checkout", 'Int'>
   readonly locationId: Prisma.FieldRef<"Checkout", 'String'>
   readonly idempotencyKey: Prisma.FieldRef<"Checkout", 'String'>
   readonly payloadHash: Prisma.FieldRef<"Checkout", 'String'>
@@ -1961,6 +2137,25 @@ export type Checkout$reservationArgs<ExtArgs extends runtime.Types.Extensions.In
    */
   include?: Prisma.ReservationInclude<ExtArgs> | null
   where?: Prisma.ReservationWhereInput
+}
+
+/**
+ * Checkout.payment
+ */
+export type Checkout$paymentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Payment
+   */
+  select?: Prisma.PaymentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Payment
+   */
+  omit?: Prisma.PaymentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PaymentInclude<ExtArgs> | null
+  where?: Prisma.PaymentWhereInput
 }
 
 /**
